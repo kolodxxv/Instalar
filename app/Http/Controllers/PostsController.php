@@ -26,7 +26,6 @@ class PostsController extends Controller
         ]);
 
         // Storing uploaded files into specified directory
-        // 'php artisan storage:link' required once
         $imagePath = request('image')->store('uploads', 'public');
 
         // TODO: Figure out how to use newer version of Image
@@ -46,11 +45,8 @@ class PostsController extends Controller
 
     // Showing each post as a separate route 
     public function show(\App\Models\Post $post)
-    // If route and $variable are named same way - by type-hinting model, 
-    // laravel will try to fetch resourse for us
     {
         return view('posts.show', compact('post'));
-        // compact() matches post to the variable $post
     } 
 
 }

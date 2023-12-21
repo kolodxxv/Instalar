@@ -44,6 +44,17 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+        // Creates a default title whenever new profile is created.
+        static::created(function ($user) {
+            $user->profile()->create([
+                'title' => $user->username,
+            ]);
+        });
+    }
+
     public function posts()
     {
         // Display all user posts, in descending order
