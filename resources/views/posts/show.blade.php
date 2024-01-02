@@ -10,16 +10,25 @@
             <div>
                 <div class="d-flex align-items-center">
                     <div class="pe-3">
-                        <img src="/storage/{{ $post->user->profile->image }}" class="rounded-circle w-100" style="max-width: 40px">
+                        <img src="{{ $post->user->profile->profileImage() }}" class="rounded-circle w-100" style="max-width: 40px">
                     </div>
                     <div>
-                        <div style="font-weight: bold;">{{ $post->user->username }}</div>
+                        <div style="font-weight: bold;">
+                            <a href="/profile/{{ $post->user->id}}" style="text-decoration:none; color: black">
+                            {{ $post->user->username }}
+                            </a>
+                            <a href="#" style="text-decoration: none; padding: 10px">Follow</a>
+                        </div>
                     </div>
                 </div>
             </div>
             <hr>
             
-            <p>{{ $post->caption }}</p>
+            <p>
+                <span style="font-weight: bold;">
+                    <a href="/profile/{{ $post->user->id }}" style="text-decoration:none; color: black">{{ $post->user->username }}</a>
+                </span> {{ $post->caption }}
+            </p>
         </div>
     </div>
 </div>
