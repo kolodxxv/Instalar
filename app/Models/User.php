@@ -6,7 +6,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NewUserWelcomeMail;
 use Laravel\Sanctum\HasApiTokens;
+
 
 class User extends Authenticatable
 {
@@ -44,9 +47,29 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+        // Creates a default title whenever new profile is created.
+        static::created(function ($user) {
+            $user->profile()->create([
+                'title' => $user->username,
+            ]);
+
+            Mail::to($user->email)->send(new NewUserWelcomeMail());
+        });
+    }
+
     public function posts()
     {
-        return $this->hasMany(Post::class);
+        // Display all user posts, in descending order
+        return $this->hasMany(Post::class)->orderBy('created_at', 'DESC');
+    }
+
+    // Followers logic 
+    public function following()
+    {
+        return $this->belongsToMany(Profile::class);
     }
 
     public function profile()
