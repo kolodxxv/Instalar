@@ -21,6 +21,10 @@ Route::get('/email', [function (){
     return new NewUserWelcomeMail();
 }]);
 
+Route::get('/home', function(){
+    return view('sidenav');
+});
+
 Route::post('follow/{user}', [App\Http\Controllers\FollowsController::class, 'store']);
 
 Route::get('/', [App\Http\Controllers\PostsController::class, 'index']);
