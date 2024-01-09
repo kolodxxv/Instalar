@@ -20,7 +20,7 @@
         <div class="menu">
           <li class="search-box">
             <i class="bx bx-search icon" ></i>
-              <input type="search" placeholder="Search...">
+              <input type="text" placeholder="Search...">
           </li>
           <ul class="menu-links">
             <li class="nav-link">
@@ -85,6 +85,10 @@
         </div>
   </nav>
 
+  <section class="home">
+    <div class="text">Dashboard</div>
+  </section>
+
   <component :is="'script'">
     const body = document.querySelector("body"),
           sidebar = body.querySelector(".sidebar"),
@@ -97,8 +101,18 @@
             sidebar.classList.toggle("close");
           });
 
+          searchBtn.addEventListener("click", () => {
+            sidebar.classList.remove("close");
+          });
+
           modeSwitch.addEventListener("click", () => {
             body.classList.toggle("dark");
+
+            if(body.classList.contains("dark")){
+              modeText.innerText = "Light Mode"
+            } else {
+              modeText.innerText = "Dark Mode"
+            }
           });
 
 
@@ -139,7 +153,7 @@
 body {
   height: 100vh;
   background: var(--body-color);
-  transition: var(--tran-002);
+  transition: var(--tran-005);
 }
 
 body.dark {
@@ -164,6 +178,8 @@ ol, ul {
   width: 250px;
   padding: 10px 14px;
   background: var(--sidebar-color);
+  transition: var(--tran-005);
+  z-index: 100;
 }
 
 .sidebar.close {
@@ -181,6 +197,7 @@ ol, ul {
   min-width: 60px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .sidebar.close .text{
@@ -239,7 +256,7 @@ header .image-text .header-text {
   position: absolute;
   top: 50%;
   right: -25px;
-  transform: translateY(-50%);
+  transform: translateY(-50%) rotate(180deg);
   height: 25px;
   width: 25px;
   background: var(--primary-color);
@@ -249,10 +266,25 @@ header .image-text .header-text {
   border-radius: 50%;
   color: var(--sidebar-color);
   font-size: 22px;
+  transition: var(--tran-003);
+}
+
+.sidebar.close header .toggle {
+  transform: translateY(-50%);
+}
+
+body.dark .sidebar header .toggle {
+  color: var(--text-color);
+}
+
+.sidebar .menu {
+  margin-top: 35px;
 }
 
 .sidebar .search-box {
   background: var(--primary-color-light);
+  border-radius: 6px;
+  transition: var(--tran-005);
 }
 
 .search-box input {
@@ -261,8 +293,11 @@ header .image-text .header-text {
   outline: none;
   border: none;
   border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
   background-color: var(--primary-color-light);
-
+  transition: var(--tran-005);
+  
 }
 
 .sidebar li a {
@@ -284,6 +319,11 @@ header .image-text .header-text {
   color: var(--sidebar-color);
 }
 
+body.dark .sidebar li a:hover .icon,
+body.dark .sidebar li a:hover .text {
+  color: var(--text-color);
+}
+
 .sidebar .menu-bar {
   height: calc(100% - 50px);
   display: flex;
@@ -292,31 +332,48 @@ header .image-text .header-text {
 }
 
 .menu-bar .mode {
+  position: relative;
+  border-radius: 6px;
   background: var(--primary-color-light);
 }
 
-.memu-bar .mode .moon-sun {
+.menu-bar .mode .moon-sun {
   height: 50px;
   width: 60px;
   display: flex;
   align-items: center;
+ 
 }
 
 .menu-bar .mode i {
-  position: relative;
+  position: absolute;
+  transition: var(--tran-003);
 }
 
 .menu-bar .mode i.sun {
   opacity: 0;
 }
 
+body.dark .menu-bar .mode i.sun {
+  opacity: 1;
+}
+
+body.dark .menu-bar .mode i.moon {
+  opacity: 0;
+}
+
 .menu-bar .mode .toggle-switch {
+  position: absolute;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
   min-width: 60px;
   cursor: pointer;
+  border-radius: 6px;
+  background: var(--primary-color-light);
+ 
 }
 
 .toggle-switch .switch {
@@ -325,6 +382,7 @@ header .image-text .header-text {
   width: 44px;
   border-radius: 25px;
   background: var(--toggle-color);
+  
 }
 
 .switch::before {
@@ -341,7 +399,28 @@ header .image-text .header-text {
 }
 
 body.dark .switch::before  {
-  left: 25px;
+  left: 24px;
+}
+
+.home {
+  position: relative;
+  left: 250px;
+  height: 100vh;
+  width: calc(100% - 250px);
+  background: var(--body-color);
+  transition: var(--tran-005);
+}
+
+.home .text {
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--text-color);
+  padding: 8px 40px;
+}
+
+.sidebar.close ~ .home{
+  left: 88px;
+  width: calc(100% - 88px);
 }
 
 </style>
