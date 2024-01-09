@@ -2,6 +2,8 @@
 
 @section('content')
 
+<Navbar></Navbar>
+
 <div class="container">
     <div class="row">
         <div class="col-md-3 p-5">
@@ -47,3 +49,4 @@
     </div>
 </div>
 @endsection
+

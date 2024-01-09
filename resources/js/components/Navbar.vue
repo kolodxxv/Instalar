@@ -85,9 +85,9 @@
         </div>
   </nav>
 
-  <section class="home">
-    <div class="text">Dashboard</div>
-  </section>
+  <!-- <section class="home">
+    <div class="text">Component</div>
+  </section> -->
 
   <component :is="'script'">
     const body = document.querySelector("body"),
@@ -151,8 +151,8 @@
 }
 
 body {
-  height: 100vh;
-  background: var(--body-color);
+  /* height: 100vh; */
+  background: var(--primary-color-light);
   transition: var(--tran-005);
 }
 
@@ -421,6 +421,6 @@ body.dark .switch::before  {
 .sidebar.close ~ .home{
   left: 88px;
   width: calc(100% - 88px);
-}
+} 
 
 </style>
