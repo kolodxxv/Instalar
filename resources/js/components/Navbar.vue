@@ -85,20 +85,18 @@
         </div>
   </nav>
 
-  <!-- <section class="home">
-    <div class="text">Component</div>
-  </section> -->
-
   <component :is="'script'">
     const body = document.querySelector("body"),
           sidebar = body.querySelector(".sidebar"),
           toggle = body.querySelector(".toggle"),
           searchBtn = body.querySelector(".search-box"),
           modeSwitch = body.querySelector(".toggle-switch"),
-          modeText = body.querySelector(".mode-text");
+          modeText = body.querySelector(".mode-text"),
+          container = body.querySelector(".container");
 
           toggle.addEventListener("click", () => {
-            sidebar.classList.toggle("close");
+            sidebar.classList.toggle("close"),
+            container.classList.toggle("open");
           });
 
           searchBtn.addEventListener("click", () => {
@@ -141,7 +139,7 @@
   --primary-color: #695CFE;
   --primary-color-light: #F6F5FF;
   --toggle-color: #DDD;
-  --text-color: #707070;
+  --text-color: #333333;
 
   /* Transition */
   --tran-002: all 0.2s ease;
@@ -373,7 +371,6 @@ body.dark .menu-bar .mode i.moon {
   cursor: pointer;
   border-radius: 6px;
   background: var(--primary-color-light);
- 
 }
 
 .toggle-switch .switch {
@@ -382,7 +379,6 @@ body.dark .menu-bar .mode i.moon {
   width: 44px;
   border-radius: 25px;
   background: var(--toggle-color);
-  
 }
 
 .switch::before {
@@ -402,25 +398,30 @@ body.dark .switch::before  {
   left: 24px;
 }
 
-.home {
-  position: relative;
-  left: 250px;
-  height: 100vh;
-  width: calc(100% - 250px);
-  background: var(--body-color);
-  transition: var(--tran-005);
+.container {
+  transition: all 0.5s ease;
 }
 
-.home .text {
+.container.open {
+  position: relative;
+  left: 100px;
+  height: 100vh;
+  width: calc(85% - 250px);
+  /* background: var(--body-color); */
+  transition: var(--tran-003);
+}
+
+/* .home .text {
   font-size: 30px;
   font-weight: 500;
   color: var(--text-color);
   padding: 8px 40px;
-}
+} */
 
-.sidebar.close ~ .home{
+
+body.sidebar.close ~ .container{
   left: 88px;
   width: calc(100% - 88px);
-} 
+}  
 
 </style>
