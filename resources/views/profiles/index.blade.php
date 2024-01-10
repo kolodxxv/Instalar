@@ -1,12 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+
+<Navbar></Navbar>
+
 <div class="container">
     <div class="row">
         <div class="col-md-3 p-5">
             <img src="{{ $user->profile->profileImage() }}" class="rounded-circle w-75">
         </div>
-        <div class="col-9 pt-5">
+        <div class="col-9 pt-5 text">
             <div class="d-flex justify-content-between align-items-baseline">
                 <h1>{{ $user->username }}</h1>
                 <div class="d-flex pe-5">
@@ -46,3 +49,8 @@
     </div>
 </div>
 @endsection
+
+
+   
+
+

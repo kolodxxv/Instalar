@@ -17,6 +17,8 @@ const app = createApp({});
 
 import ExampleComponent from './components/FollowButton.vue';
 app.component('follow-button', ExampleComponent);
+import NavbarComponent from './components/Navbar.vue';
+app.component('Navbar', NavbarComponent);
 
 /**
  * The following block of code may be used to automatically register your
