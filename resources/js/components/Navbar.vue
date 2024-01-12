@@ -24,15 +24,9 @@
           </li>
           <ul class="menu-links">
             <li class="nav-link">
-              <a href="#">
+              <a href="/">
                 <i class="bx bx-home-alt icon" ></i>
                 <span class="text nav-text">Dashboard</span>
-              </a>
-            </li>
-            <li class="nav-link">
-              <a href="#">
-                <i class="bx bx-bar-chart-alt-2 icon" ></i>
-                <span class="text nav-text">Revenue</span>
               </a>
             </li>
             <li class="nav-link">
@@ -53,18 +47,12 @@
                 <span class="text nav-text">Likes</span>
               </a>
             </li>
-            <li class="nav-link">
-              <a href="#">
-                <i class="bx bx-wallet icon" ></i>
-                <span class="text nav-text">Wallets</span>
-              </a>
-            </li>
           </ul>
         </div>
 
         <div class="bottom-content"></div>
           <li class="">
-            <a href="#">
+            <a href="logout">
               <i class="bx bx-log-out icon" ></i>
               <span class="text nav-text">Logout</span>
             </a>
