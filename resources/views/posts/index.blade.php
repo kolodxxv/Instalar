@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<Navbar></Navbar>
+<Navbar :user="{{ $user->id }}"></Navbar>
 <div class="container">
     @foreach($posts as $post)
         <div class="row">

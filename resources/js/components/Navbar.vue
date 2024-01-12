@@ -24,6 +24,12 @@
           </li>
           <ul class="menu-links">
             <li class="nav-link">
+              <a v-bind:href="'/profile/' + userId">
+                <i class="bx bx-user icon" ></i>
+                <span class="text nav-text">Profile</span>
+              </a>
+            </li>
+            <li class="nav-link">
               <a href="/">
                 <i class="bx bx-home-alt icon" ></i>
                 <span class="text nav-text">Dashboard</span>
@@ -37,12 +43,6 @@
             </li>
             <li class="nav-link">
               <a href="#">
-                <i class="bx bx-pie-chart-alt icon" ></i>
-                <span class="text nav-text">Analytics</span>
-              </a>
-            </li>
-            <li class="nav-link">
-              <a href="#">
                 <i class="bx bx-heart icon" ></i>
                 <span class="text nav-text">Likes</span>
               </a>
@@ -52,7 +52,7 @@
 
         <div class="bottom-content"></div>
           <li class="">
-            <a href="logout">
+            <a href="/logout">
               <i class="bx bx-log-out icon" ></i>
               <span class="text nav-text">Logout</span>
             </a>
@@ -107,7 +107,20 @@
 </body>
 </template>
 
-
+<script>
+  export default {
+      props: {user: Number},
+      data() {
+        return {
+          userId: null,
+        };
+      },
+      mounted() {
+        this.userId = this.user;
+        console.log(this.userId)
+      }
+    }
+</script>
 
 <style>
 /* Importing Fonts */
