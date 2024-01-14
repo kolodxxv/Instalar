@@ -2,7 +2,7 @@
 
 @section('content')
 
-<Navbar :user="{{ $user->id }}"></Navbar>
+
 
 <div class="container">
     <div class="row">

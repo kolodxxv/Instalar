@@ -1,5 +1,5 @@
 <template>
-<body>
+
   <nav class="sidebar close">
       <header>
         <div class="image-text">
@@ -24,15 +24,15 @@
           </li>
           <ul class="menu-links">
             <li class="nav-link">
-              <a v-bind:href="'/profile/' + userId">
-                <i class="bx bx-user icon" ></i>
-                <span class="text nav-text">Profile</span>
-              </a>
-            </li>
-            <li class="nav-link">
               <a href="/">
                 <i class="bx bx-home-alt icon" ></i>
                 <span class="text nav-text">Dashboard</span>
+              </a>
+            </li>
+            <li class="nav-link">
+              <a v-bind:href="'/profile/' + userId">
+                <i class="bx bx-user icon" ></i>
+                <span class="text nav-text">Profile</span>
               </a>
             </li>
             <li class="nav-link">
@@ -83,8 +83,8 @@
           container = body.querySelector(".container");
 
           toggle.addEventListener("click", () => {
-            sidebar.classList.toggle("close"),
-            container.classList.toggle("open");
+            sidebar.classList.toggle("close");
+           
           });
 
           searchBtn.addEventListener("click", () => {
@@ -104,7 +104,7 @@
 
   </component>
 
-</body>
+
 </template>
 
 <script>
