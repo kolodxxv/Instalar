@@ -60,4 +60,12 @@ class PostsController extends Controller
         return view('posts.show', compact('post'));
     } 
 
+    public function getUserId(Request $request)
+    {
+        $user = auth()->user();
+        $id = auth()->id();
+
+        return (int) $id;
+    }
+
 }

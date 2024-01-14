@@ -20,7 +20,7 @@
 </head>
 <body>
     <div id="app">
-        {{-- <Navbar></Navbar> --}}
+        <Navbar :user="{{ 1 }}"></Navbar>
         <main class="py-4">
             @yield('content')
         </main>
