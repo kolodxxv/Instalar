@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import axios from 'axios';
 
 const showModal = ref(false);
 </script>
@@ -35,7 +36,7 @@ const showModal = ref(false);
               </a>
             </li>
             <li class="nav-link">
-              <a v-bind:href="'/profile/' + userId">
+              <a v-bind:href="'/profile/' + apiId">
                 <i class="bx bx-user icon" ></i>
                 <span class="text nav-text">Profile</span>
               </a>
@@ -130,13 +131,17 @@ const showModal = ref(false);
       props: {user: Number},
       data() {
         return {
-          userId: null,
-          modal: false
+          modal: false,
+          apiId: null
         };
       },
       mounted() {
-        this.userId = this.user;
-        console.log(this.userId)
+        axios.get('/id').then(response => {
+          this.apiId = response.data;
+          console.log(this.apiId);
+        }).catch(error => {
+          console.log(error);
+        })
       }
     }
 </script>

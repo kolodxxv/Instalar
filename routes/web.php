@@ -27,6 +27,8 @@ Route::get('/home', function(){
 
 Route::post('follow/{user}', [App\Http\Controllers\FollowsController::class, 'store']);
 
+Route::get('/id', [App\Http\Controllers\NotificationsController::class, 'index']);
+
 Route::get('/', [App\Http\Controllers\PostsController::class, 'index']);
 Route::get('/p/create', [App\Http\Controllers\PostsController::class, 'create']);
 Route::get('/p/{post}', [App\Http\Controllers\PostsController::class,
