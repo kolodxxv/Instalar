@@ -1,5 +1,10 @@
-<template>
+<script setup>
+import { ref } from 'vue';
 
+const showModal = ref(false);
+</script>
+
+<template>
   <nav class="sidebar close">
       <header>
         <div class="image-text">
@@ -35,7 +40,7 @@
                 <span class="text nav-text">Profile</span>
               </a>
             </li>
-            <li class="nav-link">
+            <li class="nav-link" @click="showModal = true">
               <a href="#">
                 <i class="bx bx-bell icon" ></i>
                 <span class="text nav-text">Notifications</span>
@@ -45,6 +50,12 @@
               <a href="#">
                 <i class="bx bx-heart icon" ></i>
                 <span class="text nav-text">Likes</span>
+              </a>
+            </li>
+            <li class="nav-link">
+              <a href="#">
+                <i class="bx bx-cog icon" ></i>
+                <span class="text nav-text">Test</span>
               </a>
             </li>
           </ul>
@@ -73,6 +84,14 @@
         </div>
   </nav>
 
+  <!-- Modal window for notifications -->
+<modal-notify :show="showModal" @close="showModal= false">
+  <template #header>
+    <h3>Notifications</h3>
+  </template>
+</modal-notify>
+
+<!-- CSS scripts -->
   <component :is="'script'">
     const body = document.querySelector("body"),
           sidebar = body.querySelector(".sidebar"),
@@ -103,16 +122,16 @@
 
 
   </component>
-
-
 </template>
 
+<!-- Component scripts -->
 <script>
   export default {
       props: {user: Number},
       data() {
         return {
           userId: null,
+          modal: false
         };
       },
       mounted() {

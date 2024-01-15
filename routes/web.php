@@ -22,7 +22,7 @@ Route::get('/email', [function (){
 }]);
 
 Route::get('/home', function(){
-    return view('sidenav');
+    return view('welcome');
 });
 
 Route::post('follow/{user}', [App\Http\Controllers\FollowsController::class, 'store']);
