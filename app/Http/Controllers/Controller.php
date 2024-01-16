@@ -12,14 +12,4 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
-
-    public function userIndex(Request $request)
-    {
-       $user = Auth::user();
-       $id = Auth::id();
-
-    return view('app', compact('user'));
-       
-    }
-
 }
