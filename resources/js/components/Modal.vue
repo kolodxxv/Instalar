@@ -15,7 +15,7 @@ import axios from 'axios';
           </div>
   
           <div class="modal-body">
-            <slot name="body">
+            <div v-if="followers.length" name="body">
               <div v-for="follower in followers">
                 <small>{{ follower.updated_at }}&nbsp;</small>
                 <span>
@@ -24,7 +24,8 @@ import axios from 'axios';
                   </a> is now following
                 </span>
               </div>
-            </slot>
+            </div>
+            <div v-else><h3>There is nothing for now</h3></div> 
           </div>
   
           <div class="modal-footer">
@@ -72,8 +73,6 @@ import axios from 'axios';
 }
 
 .modal-container {
-  width: 70%;
-  height: 80%;
   margin: auto;
   padding: 20px 30px;
   background-color: #fff;
@@ -91,7 +90,13 @@ import axios from 'axios';
   margin: 20px 0;
 }
 
+/* .modal-footer {
+  display: flex;
+  flex-direction: column;
+} */
+
 .modal-default-button {
+  /* margin-top: auto; */
   float: right;
 }
 </style>

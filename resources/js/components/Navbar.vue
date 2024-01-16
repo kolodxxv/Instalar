@@ -53,12 +53,7 @@ const showModal = ref(false);
                 <span class="text nav-text">Likes</span>
               </a>
             </li>
-            <li class="nav-link">
-              <a href="#">
-                <i class="bx bx-cog icon" ></i>
-                <span class="text nav-text">Test</span>
-              </a>
-            </li>
+
           </ul>
         </div>
 
