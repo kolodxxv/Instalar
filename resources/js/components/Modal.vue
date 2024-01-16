@@ -1,4 +1,6 @@
 <script setup>
+import axios from 'axios';
+
    const props = defineProps({
     show: Boolean
    })
@@ -13,12 +15,21 @@
           </div>
   
           <div class="modal-body">
-            <slot name="body">default body</slot>
+            <slot name="body">
+              <div v-for="follower in followers">
+                <small>{{ follower.updated_at }}&nbsp;</small>
+                <span>
+                  <a v-bind:href="'/profile/' + follower.pivot.user_id" style="text-decoration: none; color: #42b983;;">
+                    <b>{{ follower.username }}</b>
+                  </a> is now following
+                </span>
+              </div>
+            </slot>
           </div>
   
           <div class="modal-footer">
             <slot name="footer">
-              default footer
+             
               <button
                 class="modal-default-button"
                 @click="$emit('close')"
@@ -30,7 +41,23 @@
     </Transition>
   </template>
 
-
+<script>
+  export default {
+    data(){
+      return {
+        followers: {}
+      };
+    },
+    mounted() {
+      axios.get('/followers').then(response => {
+        this.followers = response.data;
+        console.log(response.data)
+      }).catch(error => {
+        console.log(error);
+      })
+    }
+  }
+</script>
 <style>
 .modal-mask {
   position: fixed;
@@ -46,7 +73,7 @@
 
 .modal-container {
   width: 70%;
-  height: 90%;
+  height: 80%;
   margin: auto;
   padding: 20px 30px;
   background-color: #fff;

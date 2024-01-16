@@ -128,20 +128,19 @@ const showModal = ref(false);
 <!-- Component scripts -->
 <script>
   export default {
-      props: {user: Number},
       data() {
         return {
           modal: false,
-          apiId: null
+          apiId: null,
         };
       },
       mounted() {
         axios.get('/id').then(response => {
-          this.apiId = response.data;
-          console.log(this.apiId);
+          this.apiId = response.data.id;
+          console.log(response.data.id);
         }).catch(error => {
           console.log(error);
-        })
+        });
       }
     }
 </script>
