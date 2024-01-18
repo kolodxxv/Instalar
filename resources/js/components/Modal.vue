@@ -1,9 +1,11 @@
 <script setup>
 import axios from 'axios';
+import moment from 'moment';
 
    const props = defineProps({
     show: Boolean
-   })
+   });
+
 </script>
 
 <template>
@@ -17,7 +19,7 @@ import axios from 'axios';
           <div class="modal-body">
             <div v-if="followers.length" name="body">
               <div v-for="follower in followers">
-                <small>{{ follower.updated_at }}&nbsp;</small>
+                <small>{{ moment(follower.pivot.created_at).format('DD.MM.YY HH:MM') }}&nbsp;</small>
                 <span>
                   <a v-bind:href="'/profile/' + follower.pivot.user_id" style="text-decoration: none; color: #42b983;;">
                     <b>{{ follower.username }}</b>
@@ -46,13 +48,14 @@ import axios from 'axios';
   export default {
     data(){
       return {
-        followers: {}
+        followers: {},
+        moment: moment
       };
     },
     mounted() {
       axios.get('/followers').then(response => {
         this.followers = response.data;
-        console.log(response.data)
+        console.log(response.data);
       }).catch(error => {
         console.log(error);
       })

@@ -132,7 +132,6 @@ const showModal = ref(false);
       mounted() {
         axios.get('/id').then(response => {
           this.apiId = response.data.id;
-          console.log(response.data.id);
         }).catch(error => {
           console.log(error);
         });
