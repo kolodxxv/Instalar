@@ -35,35 +35,43 @@ const showModal = ref(false);
                 <span class="text nav-text">Dashboard</span>
               </a>
             </li>
-            <li class="nav-link">
-              <a v-bind:href="'/profile/' + apiId">
-                <i class="bx bx-user icon" ></i>
-                <span class="text nav-text">Profile</span>
-              </a>
-            </li>
-            <li class="nav-link" @click="showModal = true">
-              <a href="#">
-                <i class="bx bx-bell icon" ></i>
-                <span class="text nav-text">Notifications</span>
-              </a>
-            </li>
-            <li class="nav-link">
-              <a href="#">
-                <i class="bx bx-heart icon" ></i>
-                <span class="text nav-text">Likes</span>
-              </a>
-            </li>
-
-          </ul>
+            
+            <ul class="menu-links">
+              <li class="nav-link">
+                <a href="/">
+                  <i class="bx bx-home-alt icon" ></i>
+                  <span class="text nav-text">Dashboard</span>
+                </a>
+              </li>
+              <li class="nav-link">
+                <a v-bind:href="'/profile/' + apiId">
+                  <i class="bx bx-user icon" ></i>
+                  <span class="text nav-text">Profile</span>
+                </a>
+              </li>
+              <li class="nav-link" @click="showModal = true">
+                <a href="#">
+                  <i class="bx bx-bell icon" ></i>
+                  <span class="text nav-text">Notifications</span>
+                </a>
+              </li>
+              <li class="nav-link">
+                <a href="#">
+                  <i class="bx bx-heart icon" ></i>
+                  <span class="text nav-text">Likes</span>
+                </a>
+              </li>
+            </ul>
         </div>
 
-        <div class="bottom-content"></div>
-          <li class="">
-            <a href="/logout">
-              <i class="bx bx-log-out icon" ></i>
-              <span class="text nav-text">Logout</span>
-            </a>
-          </li>
+        <div class="bottom-content">
+            <li class="">
+              <a href="/logout">
+                <i class="bx bx-log-out icon" ></i>
+                <span class="text nav-text">Logout</span>
+              </a>
+            </li>
+          </div>    
 
           <li class="mode">
             <div class="moon-sun">
@@ -78,16 +86,15 @@ const showModal = ref(false);
           </li>
 
         </div>
-  </nav>
-
-  <!-- Modal window for notifications -->
+    </nav>
+    
 <modal-notify :show="showModal" @close="showModal= false">
   <template #header>
     <h3>Notifications</h3>
   </template>
 </modal-notify>
 
-<!-- CSS scripts -->
+
   <component :is="'script'">
     const body = document.querySelector("body"),
           sidebar = body.querySelector(".sidebar"),
@@ -120,7 +127,7 @@ const showModal = ref(false);
   </component>
 </template>
 
-<!-- Component scripts -->
+
 <script>
   export default {
       data() {
