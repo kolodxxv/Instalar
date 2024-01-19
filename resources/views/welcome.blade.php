@@ -40,7 +40,7 @@
                 <div class="author" style="padding: 10px">
                     <h1>2023, by Kolodxxv</h1>
                 </div>
-                <Navbar></Navbar>
+               
             </div>
         </div>
     </body>
