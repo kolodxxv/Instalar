@@ -28,13 +28,6 @@ const showModal = ref(false);
             <i class="bx bx-search icon" ></i>
               <input type="text" placeholder="Search...">
           </li>
-          <ul class="menu-links">
-            <li class="nav-link">
-              <a href="/">
-                <i class="bx bx-home-alt icon" ></i>
-                <span class="text nav-text">Dashboard</span>
-              </a>
-            </li>
             
             <ul class="menu-links">
               <li class="nav-link">
@@ -85,8 +78,8 @@ const showModal = ref(false);
             </div>
           </li>
 
-        </div>
-    </nav>
+      </div>
+  </nav>
     
 <modal-notify :show="showModal" @close="showModal= false">
   <template #header>
