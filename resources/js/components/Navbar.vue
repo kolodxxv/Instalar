@@ -6,54 +6,65 @@ const showModal = ref(false);
 </script>
 
 <template>
-  <nav class="sidebar close">
-      <header>
-        <div class="image-text">
-          <span class="image">
-            <img src="/svg/camera-alt-svgrepo-com.svg">
-          </span>
+  <!-- Sidenav -->
+  <div class="nav-container">
+    <nav class="sidebar close">
+        <header>
+          <div class="image-text">
+            <span class="image">
+              <img src="/svg/camera-alt-svgrepo-com.svg">
+            </span>
 
-          <div class="text header-text">
-            <span class="name">Instalar</span>
-            <span class="profession">Developer</span>
+            <div class="text header-text">
+              <span class="name">Instalar</span>
+              <span class="profession">Developer</span>
+            </div>
           </div>
-        </div>
 
-        <i class='bx bxs-chevron-right toggle'></i>
-      </header>
+          <i class='bx bxs-chevron-right toggle'></i>
+        </header>
 
-      <div class="menu-bar">
-        <div class="menu">
-          <li class="search-box">
-            <i class="bx bx-search icon" ></i>
-              <input type="text" placeholder="Search...">
-          </li>
-          <ul class="menu-links">
-            <li class="nav-link">
-              <a href="/">
-                <i class="bx bx-home-alt icon" ></i>
-                <span class="text nav-text">Dashboard</span>
-              </a>
+        <div class="menu-bar">
+          <div class="menu">
+            <li class="search-box">
+              <i class="bx bx-search icon" ></i>
+                <input type="text" placeholder="Search...">
             </li>
-            <li class="nav-link">
-              <a v-bind:href="'/profile/' + apiId">
-                <i class="bx bx-user icon" ></i>
-                <span class="text nav-text">Profile</span>
-              </a>
-            </li>
-            <li class="nav-link" @click="showModal = true">
-              <a href="#">
-                <i class="bx bx-bell icon" ></i>
-                <span class="text nav-text">Notifications</span>
-              </a>
-            </li>
-            <li class="nav-link">
-              <a href="#">
-                <i class="bx bx-heart icon" ></i>
-                <span class="text nav-text">Likes</span>
-              </a>
-            </li>
+            <ul class="menu-links">
+              <li class="nav-link">
+                <a href="/">
+                  <i class="bx bx-home-alt icon" ></i>
+                  <span class="text nav-text">Dashboard</span>
+                </a>
+              </li>
+              <li class="nav-link">
+                <a v-bind:href="'/profile/' + apiId">
+                  <i class="bx bx-user icon" ></i>
+                  <span class="text nav-text">Profile</span>
+                </a>
+              </li>
+              <li class="nav-link" @click="showModal = true">
+                <a href="#">
+                  <i class="bx bx-bell icon" ></i>
+                  <span class="text nav-text">Notifications</span>
+                </a>
+              </li>
+              <li class="nav-link">
+                <a href="#">
+                  <i class="bx bx-heart icon" ></i>
+                  <span class="text nav-text">Likes</span>
+                </a>
+              </li>
+            </ul>
+          </div>
 
+          <div class="bottom-content"></div>
+            <li class="">
+              <a href="/logout">
+                <i class="bx bx-log-out icon" ></i>
+                <span class="text nav-text">Logout</span>
+              </a>
+            </li>
           </ul>
         </div>
 
@@ -72,14 +83,21 @@ const showModal = ref(false);
             </div>
             <span class="mode-text text">Dark Mode</span>
 
-            <div class="toggle-switch">
-              <span class="switch"></span>
-            </div>
-          </li>
+            <li class="mode">
+              <div class="moon-sun">
+                <i class="bx bx-moon icon moon" ></i>
+                <i class="bx bx-sun icon sun" ></i>
+              </div>
+              <span class="mode-text text">Dark Mode</span>
 
-        </div>
-  </nav>
+              <div class="toggle-switch">
+                <span class="switch"></span>
+              </div>
+            </li>
 
+          </div>
+    </nav>
+  </div>
   <!-- Modal window for notifications -->
 <modal-notify :show="showModal" @close="showModal= false">
   <template #header>
@@ -98,7 +116,8 @@ const showModal = ref(false);
           container = body.querySelector(".container");
 
           toggle.addEventListener("click", () => {
-            sidebar.classList.toggle("close");
+            sidebar.classList.toggle("close"),
+            container.classList.toggle("open");
            
           });
 
@@ -417,14 +436,14 @@ body.dark .switch::before  {
 }
 
 .container {
-  transition: all 0.5s ease;
+  transition: all 1.5s ease;
 }
 
 .container.open {
   position: relative;
   left: 100px;
   height: 100vh;
-  width: calc(85% - 250px);
+  width: calc(90% - 250px);
   /* background: var(--body-color); */
   transition: var(--tran-003);
 }
