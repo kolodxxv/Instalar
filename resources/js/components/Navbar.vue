@@ -65,6 +65,23 @@ const showModal = ref(false);
                 <span class="text nav-text">Logout</span>
               </a>
             </li>
+          </ul>
+        </div>
+
+        <div class="bottom-content"></div>
+          <li class="">
+            <a href="/logout">
+              <i class="bx bx-log-out icon" ></i>
+              <span class="text nav-text">Logout</span>
+            </a>
+          </li>
+
+          <li class="mode">
+            <div class="moon-sun">
+              <i class="bx bx-moon icon moon" ></i>
+              <i class="bx bx-sun icon sun" ></i>
+            </div>
+            <span class="mode-text text">Dark Mode</span>
 
             <li class="mode">
               <div class="moon-sun">
@@ -125,20 +142,18 @@ const showModal = ref(false);
 <!-- Component scripts -->
 <script>
   export default {
-      props: {user: Number},
       data() {
         return {
           modal: false,
-          apiId: null
+          apiId: null,
         };
       },
       mounted() {
         axios.get('/id').then(response => {
-          this.apiId = response.data;
-          console.log(this.apiId);
+          this.apiId = response.data.id;
         }).catch(error => {
           console.log(error);
-        })
+        });
       }
     }
 </script>

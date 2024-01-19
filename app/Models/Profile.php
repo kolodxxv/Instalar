@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     protected $guarded = [];
+    
 
     public function profileImage()
     {
@@ -17,11 +18,12 @@ class Profile extends Model
 
     public function followers()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->withTimestamps();
     }
     
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
 }
