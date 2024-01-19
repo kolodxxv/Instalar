@@ -19,13 +19,11 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-    
     <div id="app">
+        <Navbar></Navbar>
         <main class="py-4">
             @yield('content')
         </main>
-        <Navbar></Navbar>
     </div>
-    
 </body>
 </html>
