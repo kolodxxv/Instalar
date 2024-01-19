@@ -6,29 +6,36 @@ const showModal = ref(false);
 </script>
 
 <template>
- 
-    <nav class="sidebar close">
-        <header>
-          <div class="image-text">
-            <span class="image">
-              <img src="/svg/camera-alt-svgrepo-com.svg">
-            </span>
+  <nav class="sidebar close">
+      <header>
+        <div class="image-text">
+          <span class="image">
+            <img src="/svg/camera-alt-svgrepo-com.svg">
+          </span>
 
-            <div class="text header-text">
-              <span class="name">Instalar</span>
-              <span class="profession">Developer</span>
-            </div>
+          <div class="text header-text">
+            <span class="name">Instalar</span>
+            <span class="profession">Developer</span>
           </div>
+        </div>
 
-          <i class='bx bxs-chevron-right toggle'></i>
-        </header>
+        <i class='bx bxs-chevron-right toggle'></i>
+      </header>
 
-        <div class="menu-bar">
-          <div class="menu">
-            <li class="search-box">
-              <i class="bx bx-search icon" ></i>
-                <input type="text" placeholder="Search...">
+      <div class="menu-bar">
+        <div class="menu">
+          <li class="search-box">
+            <i class="bx bx-search icon" ></i>
+              <input type="text" placeholder="Search...">
+          </li>
+          <ul class="menu-links">
+            <li class="nav-link">
+              <a href="/">
+                <i class="bx bx-home-alt icon" ></i>
+                <span class="text nav-text">Dashboard</span>
+              </a>
             </li>
+            
             <ul class="menu-links">
               <li class="nav-link">
                 <a href="/">
@@ -64,7 +71,7 @@ const showModal = ref(false);
                 <span class="text nav-text">Logout</span>
               </a>
             </li>
-          </div>
+          </div>    
 
           <li class="mode">
             <div class="moon-sun">
@@ -80,8 +87,7 @@ const showModal = ref(false);
 
         </div>
     </nav>
-
-  
+    
 <modal-notify :show="showModal" @close="showModal= false">
   <template #header>
     <h3>Notifications</h3>
@@ -99,8 +105,7 @@ const showModal = ref(false);
           container = body.querySelector(".container");
 
           toggle.addEventListener("click", () => {
-            sidebar.classList.toggle("close"),
-            container.classList.toggle("open");
+            sidebar.classList.toggle("close");
            
           });
 
@@ -419,14 +424,14 @@ body.dark .switch::before  {
 }
 
 .container {
-  transition: all 1.5s ease;
+  transition: all 0.5s ease;
 }
 
 .container.open {
   position: relative;
   left: 100px;
   height: 100vh;
-  width: calc(90% - 250px);
+  width: calc(85% - 250px);
   /* background: var(--body-color); */
   transition: var(--tran-003);
 }
