@@ -1,7 +1,11 @@
 <script setup>
+import axios from 'axios';
+import moment from 'moment';
+
    const props = defineProps({
     show: Boolean
-   })
+   });
+
 </script>
 
 <template>
@@ -13,12 +17,22 @@
           </div>
   
           <div class="modal-body">
-            <slot name="body">default body</slot>
+            <div v-if="followers.length" name="body">
+              <div v-for="follower in followers">
+                <small>{{ moment(follower.pivot.created_at).format('DD.MM.YY HH:MM') }}&nbsp;</small>
+                <span>
+                  <a v-bind:href="'/profile/' + follower.pivot.user_id" style="text-decoration: none; color: #42b983;;">
+                    <b>{{ follower.username }}</b>
+                  </a> is now following
+                </span>
+              </div>
+            </div>
+            <div v-else><h3>There is nothing for now</h3></div> 
           </div>
   
           <div class="modal-footer">
             <slot name="footer">
-              default footer
+             
               <button
                 class="modal-default-button"
                 @click="$emit('close')"
@@ -30,7 +44,24 @@
     </Transition>
   </template>
 
-
+<script>
+  export default {
+    data(){
+      return {
+        followers: {},
+        moment: moment
+      };
+    },
+    mounted() {
+      axios.get('/followers').then(response => {
+        this.followers = response.data;
+        console.log(response.data);
+      }).catch(error => {
+        console.log(error);
+      })
+    }
+  }
+</script>
 <style>
 .modal-mask {
   position: fixed;
@@ -45,8 +76,6 @@
 }
 
 .modal-container {
-  width: 70%;
-  height: 90%;
   margin: auto;
   padding: 20px 30px;
   background-color: #fff;
@@ -64,7 +93,13 @@
   margin: 20px 0;
 }
 
+/* .modal-footer {
+  display: flex;
+  flex-direction: column;
+} */
+
 .modal-default-button {
+  /* margin-top: auto; */
   float: right;
 }
 </style>

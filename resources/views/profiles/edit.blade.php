@@ -2,8 +2,6 @@
 
 @section('content')
 
-<Navbar></Navbar>
-
 <div class="container">
     <form action="/profile/{{ $user->id }}" enctype="multipart/form-data" method="post">
         @csrf
