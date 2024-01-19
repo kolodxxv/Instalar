@@ -20,6 +20,15 @@
                             <a href="#" style="text-decoration: none; padding: 10px">Follow</a>
                         </div>
                     </div>
+                    <div class="align-items-center">
+                        <div>
+                            <form action="{{ route('posts.delete', $post->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">Delete</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
             <hr>

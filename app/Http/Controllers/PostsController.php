@@ -28,6 +28,13 @@ class PostsController extends Controller
     {
         return view('posts.create');
     }
+
+    public function delete($id)
+    {
+        $post = Post::find($id);
+        $post->delete();
+        return redirect('/profile/' . auth()->user()->id);
+    }
     
     public function store()
     {
