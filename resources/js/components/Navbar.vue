@@ -6,7 +6,6 @@ const showModal = ref(false);
 </script>
 
 <template>
-  <!-- Sidenav -->
   <div class="nav-container">
     <nav class="sidebar close">
         <header>
@@ -81,14 +80,14 @@ const showModal = ref(false);
           </div>
     </nav>
   </div>
-  <!-- Modal window for notifications -->
+  
 <modal-notify :show="showModal" @close="showModal= false">
   <template #header>
     <h3>Notifications</h3>
   </template>
 </modal-notify>
 
-<!-- CSS scripts -->
+
   <component :is="'script'">
     const body = document.querySelector("body"),
           sidebar = body.querySelector(".sidebar"),
@@ -122,7 +121,7 @@ const showModal = ref(false);
   </component>
 </template>
 
-<!-- Component scripts -->
+
 <script>
   export default {
       props: {user: Number},
