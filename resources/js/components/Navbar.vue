@@ -6,11 +6,12 @@ const showModal = ref(false);
 </script>
 
 <template>
+  
   <nav class="sidebar close">
       <header>
         <div class="image-text">
           <span class="image">
-            <img src="/svg/camera-alt-svgrepo-com.svg">
+            <img src="/svg/camera-alt-svgrepo-com.svg" class="imgLogo" alt="logo">
           </span>
 
           <div class="text header-text">
@@ -28,13 +29,6 @@ const showModal = ref(false);
             <i class="bx bx-search icon" ></i>
               <input type="text" placeholder="Search...">
           </li>
-          <ul class="menu-links">
-            <li class="nav-link">
-              <a href="/">
-                <i class="bx bx-home-alt icon" ></i>
-                <span class="text nav-text">Dashboard</span>
-              </a>
-            </li>
             
             <ul class="menu-links">
               <li class="nav-link">
@@ -71,7 +65,7 @@ const showModal = ref(false);
                 <span class="text nav-text">Logout</span>
               </a>
             </li>
-          </div>    
+            
 
           <li class="mode">
             <div class="moon-sun">
@@ -84,9 +78,9 @@ const showModal = ref(false);
               <span class="switch"></span>
             </div>
           </li>
-
-        </div>
-    </nav>
+        </div>  
+      </div>
+  </nav>
     
 <modal-notify :show="showModal" @close="showModal= false">
   <template #header>
@@ -103,10 +97,11 @@ const showModal = ref(false);
           modeSwitch = body.querySelector(".toggle-switch"),
           modeText = body.querySelector(".mode-text"),
           container = body.querySelector(".container");
+          logo = body.querySelector(".imgLogo");
 
           toggle.addEventListener("click", () => {
-            sidebar.classList.toggle("close");
-           
+            sidebar.classList.toggle("close"),
+            container.classList.toggle("open");
           });
 
           searchBtn.addEventListener("click", () => {
@@ -114,8 +109,9 @@ const showModal = ref(false);
           });
 
           modeSwitch.addEventListener("click", () => {
-            body.classList.toggle("dark");
-
+            body.classList.toggle("dark"),
+            logo.classList.toggle("dark");
+           
             if(body.classList.contains("dark")){
               modeText.innerText = "Light Mode"
             } else {
@@ -385,6 +381,12 @@ body.dark .menu-bar .mode i.moon {
   opacity: 0;
 }
 
+/* Image dark */
+
+.image .dark {
+  filter: invert(1);
+}
+
 .menu-bar .mode .toggle-switch {
   position: absolute;
   right: 0;
@@ -432,16 +434,9 @@ body.dark .switch::before  {
   left: 100px;
   height: 100vh;
   width: calc(85% - 250px);
-  /* background: var(--body-color); */
+
   transition: var(--tran-003);
 }
-
-/* .home .text {
-  font-size: 30px;
-  font-weight: 500;
-  color: var(--text-color);
-  padding: 8px 40px;
-} */
 
 
 body.sidebar.close ~ .container{
