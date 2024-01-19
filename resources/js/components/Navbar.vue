@@ -6,7 +6,7 @@ const showModal = ref(false);
 </script>
 
 <template>
-  <div class="nav-container">
+ 
     <nav class="sidebar close">
         <header>
           <div class="image-text">
@@ -55,25 +55,16 @@ const showModal = ref(false);
                 </a>
               </li>
             </ul>
-          </div>
+        </div>
 
-          <div class="bottom-content"></div>
+        <div class="bottom-content">
             <li class="">
               <a href="/logout">
                 <i class="bx bx-log-out icon" ></i>
                 <span class="text nav-text">Logout</span>
               </a>
             </li>
-          </ul>
-        </div>
-
-        <div class="bottom-content"></div>
-          <li class="">
-            <a href="/logout">
-              <i class="bx bx-log-out icon" ></i>
-              <span class="text nav-text">Logout</span>
-            </a>
-          </li>
+          </div>
 
           <li class="mode">
             <div class="moon-sun">
@@ -82,21 +73,14 @@ const showModal = ref(false);
             </div>
             <span class="mode-text text">Dark Mode</span>
 
-            <li class="mode">
-              <div class="moon-sun">
-                <i class="bx bx-moon icon moon" ></i>
-                <i class="bx bx-sun icon sun" ></i>
-              </div>
-              <span class="mode-text text">Dark Mode</span>
+            <div class="toggle-switch">
+              <span class="switch"></span>
+            </div>
+          </li>
 
-              <div class="toggle-switch">
-                <span class="switch"></span>
-              </div>
-            </li>
-
-          </div>
+        </div>
     </nav>
-  </div>
+
   
 <modal-notify :show="showModal" @close="showModal= false">
   <template #header>
