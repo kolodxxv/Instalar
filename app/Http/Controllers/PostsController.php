@@ -32,6 +32,7 @@ class PostsController extends Controller
     public function delete($id)
     {
         $post = Post::find($id);
+        $this->authorize('delete', $post);
         $post->delete();
         return redirect('/profile/' . auth()->user()->id);
     }
