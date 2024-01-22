@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button class="btn btn-primary" @click="followUser" v-text="buttonText"></button>
+        <button class="btn btn-primary follow-btn" @click="followUser" v-text="buttonText"></button>
     </div>
 </template>
 
@@ -8,13 +8,16 @@
     export default {
         props: ['userId', 'follows' ],
 
-        mounted() {
-            console.log('Component mounted.')
-        },
+       watch: {
+        status: function() {
+            this.buttonText = (this.status) ? 'Unfollow' : 'Follow';
+        }
+       },
 
         data: function() {
             return {
                 status: this.follows,
+                buttonText: this.follows ? 'Unfollow' : 'Follow'
             }
         },
 
@@ -34,10 +37,22 @@
             }
         },
 
-        computed: {
-            buttonText() {
-                return (this.status) ? 'Unfollow' : 'Follow';
-            }
-        }
     }
 </script>
+
+<style>
+    .follow-btn {
+        background: linear-gradient(to left, #695CFE, #d35cfe);
+        border-radius: 8px;
+        border: none;
+        width: 110px;
+    }
+
+    .follow-btn:hover {
+        background: linear-gradient(to left, #8c84ef, #fe5cc8)
+    }
+
+    
+
+
+</style>

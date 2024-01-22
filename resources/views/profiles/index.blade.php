@@ -12,7 +12,7 @@
         <div class="col-9 pt-5 text">
             <div class="d-flex justify-content-between align-items-baseline">
                 <h1>{{ $user->username }}</h1>
-                {{-- Follow button Component --}}
+                
                 @cannot('update', $user->profile)
                 <div class="d-flex pe-5">
                     <follow-button user-id="{{ $user->id }}"></follow-button>
