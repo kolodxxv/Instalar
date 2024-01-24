@@ -8,16 +8,9 @@
     export default {
         props: ['userId', 'follows' ],
 
-       watch: {
-        status: function() {
-            this.buttonText = (this.status) ? 'Unfollow' : 'Follow';
-        }
-       },
-
         data: function() {
             return {
                 status: this.follows,
-                buttonText: this.follows ? 'Unfollow' : 'Follow'
             }
         },
 
@@ -36,6 +29,12 @@
                     });
             }
         },
+
+        computed: {
+            buttonText() {
+                return (this.status) ? 'Unfollow' : 'Follow';
+            }
+        }
 
     }
 </script>

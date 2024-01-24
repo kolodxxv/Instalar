@@ -15,7 +15,7 @@
                 
                 @cannot('update', $user->profile)
                 <div class="d-flex pe-5">
-                    <follow-button user-id="{{ $user->id }}"></follow-button>
+                    <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}"></follow-button>
                 </div>
                 @endcan
 
