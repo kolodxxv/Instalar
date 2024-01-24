@@ -12,10 +12,10 @@
         <div class="col-9 pt-5 text">
             <div class="d-flex justify-content-between align-items-baseline">
                 <h1>{{ $user->username }}</h1>
-                {{-- Follow button Component --}}
+                
                 @cannot('update', $user->profile)
                 <div class="d-flex pe-5">
-                    <follow-button user-id="{{ $user->id }}"></follow-button>
+                    <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}"></follow-button>
                 </div>
                 @endcan
 
@@ -45,7 +45,6 @@
                 <a href="/p/{{ $post->id }}">
                     <img src="/storage/{{ $post->image }}" class="w-100">
                 </a>
-                
             </div>
         @endforeach
     </div>
