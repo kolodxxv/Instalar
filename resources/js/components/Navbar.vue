@@ -55,6 +55,12 @@ const showModal = ref(false);
                   <span class="text nav-text">Likes</span>
                 </a>
               </li>
+              <li class="nav-link">
+                <a href="#">
+                  <i class="bx bx-message-rounded icon" ></i>
+                  <span class="text nav-text">Messages</span>
+                </a>
+              </li>
             </ul>
         </div>
 

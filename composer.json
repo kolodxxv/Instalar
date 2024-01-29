@@ -6,12 +6,15 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "beyondcode/laravel-websockets": "^1.14",
         "guzzlehttp/guzzle": "^7.2",
         "intervention/image": "^2.4.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/telescope": "^4.17",
         "laravel/tinker": "^2.8",
+        "pusher/pusher-php-server": "^7.2",
+        "react/promise": "^2.3",
         "symfony/http-client": "^7.0",
         "symfony/mailgun-mailer": "^7.0"
     },

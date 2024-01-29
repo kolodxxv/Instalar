@@ -1,7 +1,13 @@
 <?php
 
+use BeyondCode\LaravelWebSockets\Apps\AppProvider;
+use BeyondCode\LaravelWebSockets\Dashboard\DashboardLogger;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+
 use App\Mail\NewUserWelcomeMail;
+use App\Events\SendMessage;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +46,27 @@ Route::delete('/posts/{id}', [App\Http\Controllers\PostsController::class, 'dele
 Route::patch('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'update'])->name('profile.update');
 Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'index'])->name('profile.show');
 Route::get('/profile/{user}/edit', [App\Http\Controllers\ProfilesController::class, 'edit'])->name('profile.edit');
+
+Route::get('/chat', function (AppProvider $appProvider) {
+    return view('chat', [
+        "port" => env("LARAVEL_WEBSOCKETS_PORT"),
+        "host" => env("LARAVEL_WEBSOCKETS_HOST"),
+        "authEndpoint" => "/api/sockets/connect",
+        "logChannel" => DashboardLogger::LOG_CHANNEL_PREFIX,
+        "apps" => $appProvider->all()
+    ]);
+});
+
+Route::post("/chat/send", function(Request $request) {
+    $message = $request->input("message", null);
+    $name = $request->input("name", "Anonymous");
+    $time = (new DateTime(now()))->format(DateTime::ATOM);
+    if ($name == null) {
+        $name = "Anonymous";
+    }
+
+    SendMessage::dispatch($name, $message, $time);
+});
 
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/logout', [App\Http\Controllers\LogoutController::class, 'perform'])->name('logout.perform');
