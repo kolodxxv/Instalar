@@ -41,6 +41,15 @@ Route::patch('/profile/{user}', [App\Http\Controllers\ProfilesController::class,
 Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'index'])->name('profile.show');
 Route::get('/profile/{user}/edit', [App\Http\Controllers\ProfilesController::class, 'edit'])->name('profile.edit');
 
+Route::group(['middleware' => 'auth', 'prefix' => 'messages', 'as' => 'messages'], function() {
+    Route::get('/', [App\Http\Controllers\MessagesController::class, 'index']);
+    Route::get('create', [App\Http\Controllers\MessagesController::class, 'create'])->name('.create');
+    Route::post('/', [App\Http\Controllers\MessagesController::class, 'store'])->name('.store');
+    Route::get('{id}', [App\Http\Controllers\MessagesController::class, 'show'])->name('.show');
+    Route::put('{id}', [App\Http\Controllers\MessagesController::class, 'update'])->name('.update');
+    Route::delete('{id}', [App\Http\Controllers\MessagesController::class, 'destroy'])->name('.destroy');
+});
+
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/logout', [App\Http\Controllers\LogoutController::class, 'perform'])->name('logout.perform');
 });

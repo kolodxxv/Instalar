@@ -50,9 +50,10 @@ const showModal = ref(false);
                 </a>
               </li>
               <li class="nav-link">
-                <a href="#">
-                  <i class="bx bx-heart icon" ></i>
-                  <span class="text nav-text">Likes</span>
+                <a href="/messages">
+                  <i class="bx bx-chat icon" ></i>
+                  <span class="text nav-text">Messages</span>
+                  <span class="text nav-text">Messages </span>
                 </a>
               </li>
             </ul>

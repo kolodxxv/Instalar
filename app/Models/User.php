@@ -9,11 +9,12 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NewUserWelcomeMail;
 use Laravel\Sanctum\HasApiTokens;
+use Cmgmyr\Messenger\Traits\Messagable;
 
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, Messagable;
 
     /**
      * The attributes that are mass assignable.

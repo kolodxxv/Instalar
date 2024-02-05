@@ -8,7 +8,7 @@ import NavbarComponent from './components/Navbar.vue';
 import ModalComponent from './components/Modal.vue';
 
 app.component('follow-button', FollowButtonComponent);
-app.component('Navbar', NavbarComponent);
+app.component('sidenav', NavbarComponent);
 app.component('modal-notify', ModalComponent)
 
 

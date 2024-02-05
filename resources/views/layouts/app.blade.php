@@ -21,7 +21,7 @@
 <body>
     <div id="app">
         <main class="py-4">
-            <Navbar></Navbar>
+            <sidenav></sidenav>
             @yield('content')
         </main>
        
