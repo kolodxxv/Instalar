@@ -13,4 +13,10 @@
     <p>
         <small><strong>Participants:</strong> {{ $thread->participantsString(Auth::id()) }}</small>
     </p>
+    <form action="{{ route('messages.destroy', $thread->id) }}" method="POST">
+        @csrf
+        @method('DELETE')
+
+        <button>Delete</button>
+    </form>
 </div>

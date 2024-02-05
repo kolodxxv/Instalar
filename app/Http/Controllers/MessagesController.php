@@ -124,8 +124,9 @@ class MessagesController extends Controller
         return redirect()->route('messages.show', $id)->with('success', 'Reply sent successfully');
     }
 
-    public function destroy(Thread $thread)
+    public function destroy($id)
     {
+        $thread = Thread::findOrFail($id);
         $thread->removeParticipant(Auth::id());
 
         return redirect()->route('messages')->with('success', 'Thread deleted successully');

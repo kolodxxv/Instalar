@@ -7,11 +7,6 @@
         {{ csrf_field() }}
         <div class="col-md-6">
             <!-- Subject Form Input -->
-            <div class="form-group">
-                <label class="control-label">Subject</label>
-                <input type="text" class="form-control" name="subject" placeholder="Subject"
-                       value="{{ old('subject') }}">
-            </div>
 
             <!-- Message Form Input -->
             <div class="form-group">
@@ -25,6 +20,12 @@
                         <label title="{{ $user->name }}"><input type="checkbox" name="recipients[]"
                                                                 value="{{ $user->id }}">{!!$user->name!!}</label>
                     @endforeach
+                </div>
+
+                <div class="form-group" style="display: none">
+                    <label class="control-label">Subject</label>
+                    <input type="text" class="form-control" name="subject" placeholder="Subject"
+                           value="{{ $user->name }}">
                 </div>
             @endif
     
