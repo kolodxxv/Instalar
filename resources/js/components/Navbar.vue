@@ -10,9 +10,11 @@ const showModal = ref(false);
   <nav class="sidebar close">
       <header>
         <div class="image-text">
-          <span class="image">
-            <img src="/svg/camera-alt-svgrepo-com.svg" class="imgLogo" alt="logo">
-          </span>
+          <a href="/">
+            <span class="image">
+              <img src="/svg/camera-alt-svgrepo-com.svg" class="imgLogo" alt="logo">
+            </span>
+          </a>
 
           <div class="text header-text">
             <span class="name">Instalar</span>
@@ -38,9 +40,9 @@ const showModal = ref(false);
                 </a>
               </li>
               <li class="nav-link">
-                <a v-bind:href="'/profile/' + apiId">
-                  <i class="bx bx-user icon" ></i>
-                  <span class="text nav-text">Profile</span>
+                <a href="/messages">
+                  <i class="bx bx-envelope icon" ></i>
+                  <span class="text nav-text">Messages</span>
                 </a>
               </li>
               <li class="nav-link" @click="showModal = true">
@@ -50,10 +52,9 @@ const showModal = ref(false);
                 </a>
               </li>
               <li class="nav-link">
-                <a href="/messages">
-                  <i class="bx bx-chat icon" ></i>
-                  <span class="text nav-text">Messages</span>
-                  <span class="text nav-text">Messages </span>
+                <a v-bind:href="'/profile/' + apiId">
+                  <i class="bx bx-user icon" ></i>
+                  <span class="text nav-text">Profile</span>
                 </a>
               </li>
             </ul>
@@ -158,6 +159,7 @@ const showModal = ref(false);
   /* Colors */
   --body-color: #E4E9F7;
   --sidebar-color: #FFF;
+  --gradient-color: linear-gradient(to left, #695CFE, #d35cfe);
   --primary-color: #695CFE;
   --primary-color-light: #F6F5FF;
   --toggle-color: #DDD;
@@ -200,6 +202,9 @@ ol, ul {
   background: var(--sidebar-color);
   transition: var(--tran-005);
   z-index: 100;
+  border-right: outset 2px; 
+  border-radius: 0px 15px 0px 0px;
+  box-shadow: 1px 0px 5px 1px gray;
 }
 
 .sidebar.close {
@@ -279,7 +284,7 @@ header .image-text .header-text {
   transform: translateY(-50%) rotate(180deg);
   height: 25px;
   width: 25px;
-  background: var(--primary-color);
+  background: var(--gradient-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -295,6 +300,7 @@ header .image-text .header-text {
 
 body.dark .sidebar header .toggle {
   color: var(--text-color);
+  background: var(--primary-color) !important;
 }
 
 .sidebar .menu {

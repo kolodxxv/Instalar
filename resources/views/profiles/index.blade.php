@@ -15,12 +15,15 @@
                 
                 @cannot('update', $user->profile)
                 <div class="d-flex pe-5">
+                    <button class="msg-user" onclick="window.location='{{ url("messages/create") }}'">Message</button>
                     <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}"></follow-button>
                 </div>
                 @endcan
 
                 @can('update', $user->profile)
-                    <a href="/p/create" style="text-decoration: none">Add New Post</a>
+                    <button class="new-p">
+                        <a href="/p/create" style="text-decoration: none; color: white;">Add New Post</a>
+                    </button>
                 @endcan
             </div>
 
@@ -50,6 +53,28 @@
     </div>
 </div>
 @endsection
+
+<style>
+    .new-p {
+        background: linear-gradient(to left, #695CFE, #d35cfe);
+        border-radius: 8px;
+        border: none;
+        width: 110px;
+    }
+
+    .msg-user {
+        margin-right: 10px;
+        width: 80px;
+        border-radius: 8px;
+        border: none;
+        background: linear-gradient(180deg, #695CFE, #d35cfe);
+        color: white;
+    }
+
+    .msg-user:hover {
+        background: linear-gradient(180deg, #8c84ef, #fe5cc8);
+    }
+</style>
 
 
    
